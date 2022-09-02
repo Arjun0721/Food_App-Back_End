@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.cl.food_app.Exceptions.IDnotFound;
 import com.cl.food_app.dao.OrderDao;
 import com.cl.food_app.dao.StaffDao;
+import com.cl.food_app.dto.Items;
 import com.cl.food_app.dto.Orders;
 import com.cl.food_app.structure.ResponseStructure;
 
@@ -23,10 +24,17 @@ public class OrdersService {
 
 	@Autowired
 	StaffDao staffDao;
+	
+	@Autowired
+	Items items;
 
 	// save
 	public ResponseEntity<ResponseStructure<Orders>> saveorders(Orders orders) {
 		// orders.setStaff(staffDao.getby(id).get());
+		double i_price=items.getPrice();
+		int i_quantity=items.getQuantity();
+		double price=i_price*i_quantity;
+		orders.setTotal_price(price);
 		ResponseStructure<Orders> responseStructure = new ResponseStructure<>();
 		responseStructure.setMessage("Saved successfully");
 		responseStructure.setStatuscode(HttpStatus.CREATED.value());

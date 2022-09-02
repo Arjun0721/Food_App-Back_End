@@ -31,18 +31,18 @@ public class Products {
 	@JoinColumn
 	Menu menu;
 	
-//	@OneToOne(mappedBy = "products")
-//	@JsonIgnore
-//	Items items ;
+	@OneToMany(mappedBy = "products",cascade = CascadeType.ALL)
+	@JsonIgnore
+	List<Items> items ;
 	
 
 	
-//	public Items getItems() {
-//		return items;
-//	}
-//	public void setItems(Items items) {
-//		this.items = items;
-//	}
+	public List<Items> getItems() {
+		return items;
+	}
+	public void setItems(List<Items> items) {
+		this.items = items;
+	}
 	public int getId() {
 		return id;
 	}

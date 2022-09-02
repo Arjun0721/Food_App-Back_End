@@ -9,6 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
 public class Items {
 	@Id
@@ -17,21 +20,22 @@ public class Items {
 	private String name;
 	private String type;
 	private int quantity;
-	private int price;
+	private double price;
 	@ManyToOne
 	@JoinColumn
 	Orders orders;
-//	
-//	@OneToOne
-//	Products products;
-//
-//	
-//	public Products getProducts() {
-//		return products;
-//	}
-//	public void setProducts(Products products) {
-//		this.products = products;
-//	}
+	
+	@ManyToOne
+	@JoinColumn
+	Products products;
+
+	
+	public Products getProducts() {
+		return products;
+	}
+	public void setProducts(Products products) {
+		this.products = products;
+	}
 	public Orders getOrders() {
 		return orders;
 	}
@@ -62,10 +66,10 @@ public class Items {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	

@@ -29,7 +29,7 @@ public class ProductsControler {
 		return productsService.saveProducts(products);
 	}
 	
-	@GetMapping("/products/{id}")
+	@GetMapping("/getbyproducts/{id}")
 	public ResponseEntity<ResponseStructure<Products>> getby(@PathVariable int id){
 		return productsService.getby(id);
 	}
